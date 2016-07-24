@@ -28,8 +28,14 @@ public class MyQueue<T> implements MyQueueInterface<T> {
 		
 	}
 
-	public void remove() throws NoSuchElementException {
+	public T remove() throws NoSuchElementException {
 		// TODO Auto-generated method stub
+		if(first == null) throw new NoSuchElementException();
+		T item = first.data;
+		first = first.next;
+		if(last == null)
+			last = first;
+		return item;
 		
 	}
 

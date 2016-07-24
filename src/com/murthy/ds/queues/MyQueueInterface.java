@@ -6,7 +6,7 @@ public interface MyQueueInterface<T> {
 	
 	public void add(T item);
 	
-	public void remove() throws NoSuchElementException;
+	public T remove() throws NoSuchElementException;
 	
 	public void peek() throws NoSuchElementException;
 	
