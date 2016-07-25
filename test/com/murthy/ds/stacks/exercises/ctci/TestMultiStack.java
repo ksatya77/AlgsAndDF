@@ -28,18 +28,34 @@ public class TestMultiStack extends TestCase {
 	}
 
 	@Test
+	public void testEmptyPop() {
+		try{
+			MultiStack mStack = new MultiStack(2);
+			int value = mStack.pop(1);
+		} catch(Exception e) {
+			assertTrue(e instanceof RuntimeException);
+			assertEquals(e.getMessage(),"Stack is empty");
+		}
+	}
+	
+	@Test
 	public void testPop() {
-		fail("Not yet implemented");
+		MultiStack mStack = new MultiStack(2);
+		mStack.push(0, 2);
+		assertEquals(mStack.pop(0),2);
 	}
 
 	@Test
 	public void testPeek() {
-		fail("Not yet implemented");
+		MultiStack mStack = new MultiStack(2);
+		mStack.push(0, 2);
+		assertEquals(mStack.peek(0),2);
 	}
 
 	@Test
 	public void testIsEmpty() {
-		fail("Not yet implemented");
+		MultiStack mStack = new MultiStack(2);
+		assertTrue(mStack.isEmpty(0));
 	}
 
 }

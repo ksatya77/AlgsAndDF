@@ -15,26 +15,37 @@ public class MultiStack {
 	public void push(int stackNum, int value) throws RuntimeException{
 		if(sizes[stackNum] == stackCapacity) throw new RuntimeException("Stack Overflow");
 		
-		int top = sizes[stackNum];
-		int offset = stackNum * stackCapacity;
-		values[offset+top] = value;
+		int stackSize = sizes[stackNum];
+		int top = stackNum * stackCapacity+stackSize;
+		values[top] = value;
 		sizes[stackNum]++;
 		
 	}
 	
 	public int pop(int stackNum) throws RuntimeException {
+		int stackSize = sizes[stackNum];
+		if(stackSize == 0) throw new RuntimeException("Stack is empty");
 		
-		return 0;
+		int top = stackNum*stackCapacity+stackSize;
+		int retValue = values[top-1];
+		values[top-1]=0;
+		sizes[stackNum]--;
+		return retValue;
 	}
 	
 	public int peek(int stackNum) throws RuntimeException {
+		int stackSize = sizes[stackNum];
+		if(stackSize == 0) throw new RuntimeException("Stack is empty");
 		
-		return 0;
+		int top = stackNum*stackCapacity+stackSize;
+		int retValue = values[top-1];
+		values[top-1]=0;
+		return retValue;
 	}
 	
-	public boolean isEmpty() {
+	public boolean isEmpty(int stackNum) {
 		
-		return false;
+		return sizes[stackNum] == 0;
 	}
 	
 	public void toString(int stackNum){
